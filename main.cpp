@@ -12,7 +12,6 @@ int main()
   sf::CircleShape circle(50);
   circle.setFillColor(sf::Color::Magenta);
   circle.setPosition(300.0f, 300.0f);
-  float circleMoveSpeed = 0.01f;
 
   // sf::Font myFont;
   // if (!myFont.loadFromFile("fonts/tech.ttf"))
@@ -34,20 +33,38 @@ int main()
         std::cout << "Closing window" << std::endl;
         window.close();
       }
+
       // Key press event
       if (event.type == sf::Event::KeyPressed)
       {
-        std::cout << "Key pressed: " << event.key.code << std::endl;
+        // std::cout << "Key pressed: " << event.key.code << std::endl;
+        if (event.key.code == sf::Keyboard::W)
+        {
+          circle.move({0.f,-5.f});
+        }
         if (event.key.code == sf::Keyboard::A)
         {
           circle.move({-5.f,0.f});
         }
-
+        if (event.key.code == sf::Keyboard::S)
+        {
+          circle.move({0.f,5.f});
+        }
+        if (event.key.code == sf::Keyboard::D)
+        {
+          circle.move({5.f,0.f});
+        }
       }
-    window.clear();
-    window.draw(circle);
-    window.display();
     }
+
+      // float circleMoveSpeedX = 0.01f;
+      // float circleMoveSpeedY = 0.01f;
+      // circle.setPosition(circle.getPosition().x + circleMoveSpeedX, circle.getPosition().y + circleMoveSpeedY);
+
+      window.clear();
+      window.draw(circle);
+      // window.draw(text);
+      window.display();
   }
 
   return 0;
