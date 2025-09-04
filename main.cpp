@@ -7,7 +7,13 @@ int main()
   const int winWidth = 640;
   const int winHeight = 480;  
   sf::RenderWindow window(sf::VideoMode(winWidth, winHeight), "Hello");
-  // window.setFramerateLimit(60);      
+  // window.setFramerateLimit(60);   
+  sf::Texture skateTexture;
+  skateTexture.loadFromFile("dexPack.png");
+  sf::Sprite skate(skateTexture);
+  sf::Vector2u size = skateTexture.getSize();
+  skate.setOrigin(size.x /2, size.y / 2);
+
 
   sf::CircleShape circle(50);
   circle.setFillColor(sf::Color::Magenta);
@@ -40,19 +46,19 @@ int main()
         // std::cout << "Key pressed: " << event.key.code << std::endl;
         if (event.key.code == sf::Keyboard::W)
         {
-          circle.move({0.f,-5.f});
+          skate.move({0.f,-5.f});
         }
         if (event.key.code == sf::Keyboard::A)
         {
-          circle.move({-5.f,0.f});
+          skate.move({-5.f,0.f});
         }
         if (event.key.code == sf::Keyboard::S)
         {
-          circle.move({0.f,5.f});
+          skate.move({0.f,5.f});
         }
         if (event.key.code == sf::Keyboard::D)
         {
-          circle.move({5.f,0.f});
+          skate.move({5.f,0.f});
         }
       }
     }
@@ -62,7 +68,7 @@ int main()
       // circle.setPosition(circle.getPosition().x + circleMoveSpeedX, circle.getPosition().y + circleMoveSpeedY);
 
       window.clear();
-      window.draw(circle);
+      window.draw(skate);
       // window.draw(text);
       window.display();
   }
